@@ -1,0 +1,14 @@
+services:
+  docs:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    ports:
+      - "12100:4321"
+      - "12101:8081"
+      - "12102:8082"
+      - "12103:8083"
+    volumes:
+      - ./docs:/app/starlight/src/content/docs
+      - ./openapi:/app/api-design
+      - ./astro.config.mjs:/app/starlight/astro.config.mjs
