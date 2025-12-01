@@ -25,11 +25,11 @@ To use this image, organize your content as follows:
 
 ```
 .
-├── docs/               # Your Starlight markdown content
-│   └── system-design/  # System design documents
-├── openapi/            # Your OpenAPI specifications
+├── docs/                 # Your Starlight markdown content
+│   └── system-design/    # System design documents
+├── openapi/              # Your OpenAPI specifications
 │   └── api-spec.yml
-├── astro.config.mjs    # Starlight configuration
+├── starlight.config.mjs  # Starlight configuration (sidebar, title, social)
 └── docker-compose.yml
 ```
 
@@ -46,11 +46,36 @@ services:
       - "12001:8081" # Spec Server
       - "12002:8082" # Swagger UI
       - "12003:8083" # Redoc
+    environment:
+      - SPEC_EXTERNAL_PORT=12001 # Must match the external port mapped to 8081
     volumes:
       - ./docs:/app/starlight/src/content/docs
       - ./openapi:/app/api-design
-      - ./astro.config.mjs:/app/starlight/astro.config.mjs
+      - ./starlight.config.mjs:/app/starlight/starlight.config.mjs
 ```
+
+### Configuration
+
+#### Starlight Config
+Create a `starlight.config.mjs` file to configure your documentation site. This file maps to the [Starlight configuration](https://starlight.astro.build/reference/configuration/) object.
+
+```javascript
+export default {
+	title: 'My System Docs',
+	social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/my-org/my-repo' }],
+	sidebar: [
+		{
+			label: 'System Design',
+			items: [
+				{ label: 'Overview', slug: 'system-design/01-overview' },
+			],
+		},
+	],
+}
+```
+
+#### Environment Variables
+- `SPEC_EXTERNAL_PORT`: (Optional) The external port where the Spec Server is accessible. Defaults to `12101`. This is used to generate the correct URLs for Swagger UI and Redoc. If you change the mapped port for `8081`, update this variable.
 
 Run the stack:
 

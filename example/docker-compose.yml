@@ -13,4 +13,4 @@ services:
     volumes:
       - ./docs:/app/starlight/src/content/docs
       - ./openapi:/app/api-design
-      - ./astro.config.mjs:/app/starlight/astro.config.mjs
+      - ./starlight.config.mjs:/app/starlight/starlight.config.mjs

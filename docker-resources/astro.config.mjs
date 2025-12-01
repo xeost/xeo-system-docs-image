@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import mermaid from 'astro-mermaid';
+import starlightConfig from './starlight.config.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,8 +12,9 @@ export default defineConfig({
 			autoTheme: true,
 		}),
 		starlight({
-			title: 'Wordsus Docs',
+			...starlightConfig,
 			head: [
+				...(starlightConfig.head || []),
 				{
 					tag: 'script',
 					attrs: {
@@ -27,22 +29,13 @@ export default defineConfig({
 					},
 				},
 			],
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/wordsus' }],
-			sidebar: [
-				{
-					label: 'System Design',
-					items: [
-						{ label: 'Overview', slug: 'system-design/01-overview' },
-					],
-				},
-			],
-			locales: {
+			locales: starlightConfig.locales || {
 				root: {
 					label: 'English',
 					lang: 'en',
 				},
 			},
-			defaultLocale: 'root',
+			defaultLocale: starlightConfig.defaultLocale || 'root',
 		}),
 	],
 });

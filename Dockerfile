@@ -24,7 +24,8 @@ RUN mkdir -p /app/starlight && \
 
 # Copy Starlight configs from repo
 # We assume the build context is the repository root
-COPY example/astro.config.mjs /app/starlight/
+COPY docker-resources/astro.config.mjs /app/starlight/
+COPY example/starlight.config.mjs /app/starlight/
 COPY docker-resources/mermaid-zoom.js /app/starlight/public/
 COPY example/docs /app/starlight/src/content/docs
 
