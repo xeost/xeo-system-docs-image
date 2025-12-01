@@ -4,10 +4,12 @@ services:
       context: ..
       dockerfile: Dockerfile
     ports:
-      - "12100:4321"
-      - "12101:8081"
-      - "12102:8082"
-      - "12103:8083"
+      - "12000:4321"
+      - "12001:8081"
+      - "12002:8082"
+      - "12003:8083"
+    environment:
+      - SPEC_EXTERNAL_PORT=12001
     volumes:
       - ./docs:/app/starlight/src/content/docs
       - ./openapi:/app/api-design

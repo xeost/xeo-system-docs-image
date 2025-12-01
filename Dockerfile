@@ -69,7 +69,7 @@ EXPOSE 4321 8081 8082 8083
 
 # Environment variables defaults
 ENV OPENAPI_FILE=api-spec.yml
-ENV SWAGGER_JSON_URL=http://localhost:12101/${OPENAPI_FILE}
-ENV SPEC_URL=http://localhost:12101/${OPENAPI_FILE}
+ENV SPEC_SERVER_PORT=8081
+ENV SPEC_EXTERNAL_PORT=12001
 
 CMD ["/entrypoint.sh"]

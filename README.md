@@ -42,10 +42,10 @@ services:
   docs:
     image: xeost/xeo-system-docs-image:latest
     ports:
-      - "12100:4321" # Starlight
-      - "12101:8081" # Spec Server
-      - "12102:8082" # Swagger UI
-      - "12103:8083" # Redoc
+      - "12000:4321" # Starlight
+      - "12001:8081" # Spec Server
+      - "12002:8082" # Swagger UI
+      - "12003:8083" # Redoc
     volumes:
       - ./docs:/app/starlight/src/content/docs
       - ./openapi:/app/api-design
@@ -64,10 +64,10 @@ Once running, the services are available at the following ports:
 
 | Service | URL | Description |
 |---------|-----|-------------|
-| **Documentation** | `http://localhost:12100` | Starlight documentation site with system designs |
-| **Raw Spec** | `http://localhost:12101` | Raw OpenAPI file server |
-| **Swagger UI** | `http://localhost:12102` | Interactive API playground |
-| **Redoc** | `http://localhost:12103` | API Reference documentation |
+| **Documentation** | `http://localhost:12000` | Starlight documentation site with system designs |
+| **Raw Spec** | `http://localhost:12001` | Raw OpenAPI file server |
+| **Swagger UI** | `http://localhost:12002` | Interactive API playground |
+| **Redoc** | `http://localhost:12003` | API Reference documentation |
 
 ## Workflow
 
