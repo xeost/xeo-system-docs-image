@@ -1,6 +1,6 @@
 export default {
-	title: 'Wordsus Docs',
-	social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/wordsus' }],
+	title: 'Your System Docs',
+	social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/your-org' }],
 	sidebar: [
 		{
 			label: 'System Design',
